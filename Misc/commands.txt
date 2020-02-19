@@ -1,0 +1,33 @@
+
+In case there is a netcat connection and there is and algebra equation you can use
+	pwn
+	simpy 
+
+Simpy:
+	
+	X = sympy.Symbol('Y')
+	s = remote(ip,9000)
+	s.recv()
+	
+	while(1):
+		prompt = s.recv()
+		print prompt
+		if(stopflag in prompt):
+			equation = prompt.split('\n')[1]
+		else	
+			equation = prompt.split('\n')[0]
+		left, right = equation.split('=')
+		eq = sympy.Eq(eval(left),eval(right))
+		answer = sympy.solve(eq,Y)[0]
+		s.sendline(str(float(answer)))
+s.close()
+
+
+
+wget -m "page.html"    ->   Mirror
+
+convert [gif.gif] %02d.png   transform  gif into pngs 00-99
+
+
+converts a file with ascii codes to string
+print '',join([chr(int(x)) for x in file.read()])

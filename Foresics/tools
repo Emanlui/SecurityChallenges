@@ -1,0 +1,27 @@
+To add all the gif frames into one image:
+
+	convert [gif_name].gif %02d.png
+	ls *.png | while read filename; do convert $filename -transparent white $filename; done
+	ls *.png | while read filename; do convert $filename 00.png -gravity center -composite 00.png; done
+
+
+
+bruteforce zip
+	fcrackzip 
+
+view hex values and change it
+	
+	hexedit
+
+binwalk -e
+foremost
+tcpflow -r [file].pcap
+
+
+volatility to do ram analysis
+
+# Always check the file header
+
+
+
+

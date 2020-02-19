@@ -1,0 +1,132 @@
+#  Repository of Pulses for Turgen System
+#  -----------------------------------------------------------------------------
+#
+#  The file format is the following:
+#
+#  Lines beginning with # and blank lines are ignored
+#  Lines beginning with > are lists of plugins  
+#  Other lines are defining pulses for the most recent list of plugins.
+#
+#  A definition of pulses is a comma-separated list of values:
+#  
+#  1. Human readable name        (Appears in the UI)
+#  2. Approximate transfer speed (Used for comparisons, in bps)
+#  3. Width of pilot tone pulse  (Pilot tone)
+#  4. Width of wide pulse        (Encoding 1)
+#  5. Width of narrow pulse      (Encoding 0)
+#  6. Width of sync pulse        (Pulse separating pilot tone and data)
+#  7. Width of stop pulse        (Pulse terminating data)
+#
+#  The widths (durations) of the pulses are specified as number of samples.
+#  The number of samples can be specified in two ways:
+#
+#  1. Single number indicating pulse width for sampling rate of 44100 Hz
+#     This is sufficient for most cases and transfer speeds below
+#     4000 bd.
+# 
+#  2. <SAMPLERATE>:<WIDTH> pairs separated by | (pipe)
+#     E.g. 48000:20|44100:18
+#
+#  Note 1: It is highly recommended to order the pulses by their approximate
+#          transfer speed
+#           
+#  Note 2: The T2270 pulses MUST be the first for the following plugins:
+#          turgen.plugin.btape.BTapePlugin,turgen.plugin.kblock.KBlockPlugin,
+#          turgen.plugin.csturbo.Turbo2000Plugin           
+#
+#  *****   *
+#  *   *   *
+#  *   *****
+#  <-------> Width of pulse
+
+#Base pulses for the Czechoslovak and Czech turbo systems
+>turgen.plugin.czbtape.BTapePlugin,turgen.plugin.cskblock.KBlockPlugin,turgen.plugin.csturbo.Turbo2000Plugin
+
+T2270,2270,32,26,12,10, 0
+T2310,2310,30,24,10, 8, 0
+
+#Systems derived from the Czechoslovak Super Turbo
+>turgen.plugin.csturbo.SuperTurboPlugin,turgen.plugin.czbtape.BTapePlugin
+
+T2765,2765,22,22,11,11, 0
+T2925,2925,21,21,10,10, 0
+T3060,3060,20,20,10,10, 0
+T3205,3205,19,19, 9, 9, 0
+T3365,3365,18,18, 9, 9, 0
+T3605,3605,17,17, 8, 8, 0
+T3810,3810,16,16, 8, 8, 0
+T4040,4040,15,15, 7, 7, 0
+T4490,4490,14,14, 7, 7, 0
+T5180,5180,12,12, 6, 6, 0
+T6315,6315,10,10, 5, 5, 0
+
+
+#Polish KSO Turbo 2000 and compatibles
+>turgen.plugin.plturbo.PlKSOTurbo2000Plugin
+T3060,3060,44,22,11, 0, 84
+
+#Polish Turbo Blizzard
+>turgen.plugin.plblizzard.PlTurboBlizzardPlugin
+T4410,4410,44100:22|48000:24,44100:12|48000:12,44100:8|48000:8,44100:8|48000:8,44100:0|48000:0
+
+#Polish Turbo ROM
+>turgen.plugin.plturbo.PlTurboROMPlugin
+T4000,4000,44100:14|48000:18,44100:14|48000:14, 44100:6|48000:8, 44100:6|48000:8,44100:48|48000:52
+
+#Polish Atari Super Turbo
+>turgen.plugin.plturbo.PlASTPlugin
+T3500,3500,22,22,12,12,72
+
+#Polish Atari Hard Turbo
+>turgen.plugin.plturbo.PlHardTurboPlugin
+T2270,2270,34,22,12,12,0
+
+#Polish Lower Silesian Turbo 2000
+>turgen.plugin.plturbo.PlLowerSilesianTurbo2000Plugin
+T2270,2270,32,26,12,10,0
+
+#British Rambit Turbo Tape
+>turgen.plugin.gbrambit.GBRambitPlugin
+T3200,3200,19,19,10,10,0
+
+#Turbo 6000 from GDR
+>turgen.plugin.deturbo6000.DeTurbo6000Plugin
+T3200,3200,44100:14|48000:16,44100:14|48000:16,44100:8|48000:10,44100:8|48000:10,44100:0|48000:0
+
+#Standard Plugin - Only the approximate transfer speed is actually used
+>turgen.plugin.standard.StandardPlugin
+FSK600,600,0,0,0,0,0
+FSK610,610,0,0,0,0,0
+FSK620,620,0,0,0,0,0
+FSK630,630,0,0,0,0,0
+FSK640,640,0,0,0,0,0
+FSK650,650,0,0,0,0,0
+FSK660,660,0,0,0,0,0
+FSK670,670,0,0,0,0,0
+FSK680,680,0,0,0,0,0
+FSK690,690,0,0,0,0,0
+FSK700,700,0,0,0,0,0
+FSK720,720,0,0,0,0,0
+FSK740,740,0,0,0,0,0
+FSK760,760,0,0,0,0,0
+FSK780,780,0,0,0,0,0
+FSK800,800,0,0,0,0,0
+
+#Omicron Turbo
+>turgen.plugin.omicron.OmicronTurboPlugin
+T2270,2270,32,26,12,10,0
+T2750,2750,22,22,10,10,0
+T2925,2925,21,21,10,10, 0
+T3060,3060,20,20,10,10, 0
+T3205,3205,19,19, 9, 9, 0
+T3365,3365,18,18, 9, 9, 0
+T3605,3605,17,17, 8, 8, 0
+T3810,3810,16,16, 8, 8, 0
+T4040,4040,15,15, 7, 7, 0
+T4490,4490,14,14, 7, 7, 0
+T5180,5180,12,12, 6, 6, 0
+T6315,6315,10,10, 5, 5, 0
+
+#Slovak Turbo D
+>turgen.plugin.skturbod.TurboDPlugin
+T4000,4000,10,20,10,10,0

@@ -1,0 +1,16 @@
+turgen.plugin.csturbo.Turbo2000Plugin
+turgen.plugin.csturbo.SuperTurboPlugin
+turgen.plugin.cskblock.KBlockPlugin
+turgen.plugin.czbtape.BTapePlugin
+turgen.plugin.plturbo.PlKSOTurbo2000Plugin
+turgen.plugin.plblizzard.PlTurboBlizzardPlugin
+turgen.plugin.plturbo.PlTurboROMPlugin
+turgen.plugin.plturbo.PlASTPlugin
+turgen.plugin.plturbo.PlHardTurboPlugin
+turgen.plugin.plturbo.PlLowerSilesianTurbo2000Plugin
+turgen.plugin.gbrambit.GBRambitPlugin
+turgen.plugin.deturbo6000.DeTurbo6000Plugin
+turgen.plugin.standard.StandardPlugin
+turgen.plugin.TapeImagePlugin
+turgen.plugin.omicron.OmicronTurboPlugin
+#turgen.plugin.skturbod.TurboDPlugin

@@ -1,0 +1,408 @@
+Changes from version 8.6.13 to 8.6.14 
+=====================================
+
+Major enhancements:
+
+* Configurable sampling rates of 44100, 48000, 96000 and 22050 Hz
+* Configuration of the signal outputs consolidated from 6 to 3 sections
+* Pulse repository adjusted to accommodate various sampling rates
+* The Standard, Turbo Blizzard, Turbo ROM and Turbo 6000 plugins provide
+  increased accuracy of the signal with higher sampling rates
+* Wave output and Audio output both allow initial and terminal silence
+
+Bug fixes:
+
+* Wizard for binary files could not create playlist items for the Turbo 6000
+  plugin
+
+Compatibility warning:
+
+* After upgrade to this version, the product configuration is not fully
+  preserved. Check the preferences and re-configure if needed.
+
+Changes from version 8.6.12 to 8.6.13
+=====================================
+
+By releasing this version, I am repaing my debt to users from USA by
+enhancing the Standard plugin. This is part of the previously started 
+program stabilization efforts.
+
+TSCBL - New loader for the Standard plugin
+
+* The loader displays program title (up to 34 characters)
+* Customizable background color 
+* Customizable text luminance (allows for more reasonable
+  foreground/background combinations for displaying the program title). 
+* The loader can hide the cursor
+* The loader can set silent I/O
+* The loader allows cold start when you press SELECT+RESET
+ 
+Other enhnancements of the Standard plugin
+
+* Redesigned user interface
+* You can enter hexadecimal ATASCII codes in the program title field.
+  This way, the loader can display characters not accessible on?PC
+	keyboard. See documentation for more details and syntax.
+* You can decide not to convert the loader.
+* Minimum duration of the leader tone is now 14 seconds, a safer value
+ 
+Other changes and fixes
+
+* The default signal amplitude was reduced to 75 % for both WAVE files
+  and direct audio output. This value reduces the risk of clipping in
+  the recording chain.
+* Turbo 6000 was included in the Wizard for binary files
+* Several sections of the documentation have been streamlined and
+  updated.
+
+Changes from version 8.6.11 to 8.6.12
+=====================================
+Enhancements:
+
+* Pilot tone test dialog
+
+Infrastructure
+
+* Source code cleanup, inspection and transformation
+* Minor documentation fixes
+
+Changes from version 8.6.10 to 8.6.11
+=====================================
+
+The turgen.exe launcher has been upgraded, so it can use JRE or JDK to run the
+product. This ensures compatibility with Java 9 and newer.
+Updates in documentation reflecting changes in distribution of Java SE 9 and
+newer.
+To keep the download package small, Turgen System will not be shipped with its
+own customized runtime environment.
+
+All files needed for successful build from source code are now in GIT
+No source code package, the source code is available in GIT
+Support for trXX tape image chunks has been removed.
+The trXX tape image chunks were used sparingly. If you need to use them, you
+can download one of the older versions.
+
+Other updates:
+Minor UI updates. The batch processor dialog is more streamlined. The menu item
+for displaying immediate pulse corrections has been moved to the View menu.
+The tool for merging segments of binary files provides better input validation.
+Fixes in documentation, misleading information in the Batch Processing section
+has been corrected.
+
+Changes from version 8.6.9 to 8.6.10
+====================================
+This is a minor bugfix release
+
+Bugs fixed:
+
+* B-TAPE plugin: Automatic file name creation fixed for file names without extension
+* Turbo 2000 plugin: NullPointerException thrown during the BlockLoading conversion without a binary loader
+
+Enhancements:
+
+* Batch processing: Numbering of the output files is optional
+* Wave output: It is now possible to number the output files
+* Merging segments of binary file: Automatic determination of attributes of the code that replaces INIT segments
+
+Changes from version 8.6.8 to 8.6.9
+===================================
+This is mainly a bugfix release with few enhancements.
+
+Serious bugs fixed:
+
+* Standard tape records: Eliminated unnecessary discontinuities in the signal caused by resetting phase after each block.
+* Signal generators: Inverting polarity of pulses did not work for waveforms other than square. Now it works for all waveforms.
+* Turbo Blizzard: Wrong widths of pulses frequently prevented loading files with real hardware. Pulse widths are fixed.
+* Turbo Blizzard: Decoder updated with new pulse widths
+* Omicron turbo: Tape boot file created with the "Faster boot" option was not bootable. Now it can be booted correctly.
+* B-TAPE: Automatic file name creation was failing for file names with multiple periods. Fixed now.
+* Rambit Turbo Tape: Default polarity of the pulses is now HIGH-LOW
+* Rambit Turbo Tape: The "Invert polarity of the pulses" option was ignored. It is now honored.
+* Turbo 6000: The default polarity of the pulses is now LOW-HIGH.
+* Turbo 6000: The ChainLoader loader was fixed to expect natural polarity of the Turbo 6000 pulses.
+
+Enhancements:
+
+* Output to the sound card: The generated signal is always double-buffered. Configuration entry enabling this function was removed
+* Standard tape records: More transfer speeds are available
+* Turbo Blizzard: Now you can prepend MICROLOADER or SHORT KOS, either as a tape boot file or Turbo Blizzard file.
+* KSO Turbo 2000: Decoder provides an option to decode files with a loader. The loader is expected to be 1 block long.
+
+Architectural Changes:
+
+* Some packages and plugins were renamed or moved from package to package
+* The Turbo Blizzard plugin was refactored and streamlined
+
+Acknowledgements
+
+* Many thanks to ATARIONLINE.PL users for their help with Turbo Blizzard and KSO Turbo 2000
+* Many thanks to PHAERON for help with Rambit Turbo Tape and Turbo 6000
+
+
+
+Changes from version 8.6.7 to 8.6.8
+===================================
+
+Serious Bugs Fixed
+
+* The Standard plugin doesn't automatically elongate IRGs after blocks that hold INIT segments to 1500 ms as it should.
+* All plugins that generate data blocks of a regular size can insert silence or elongate IRG before block that actually holds an INIT segment. This happens when an INIT segments begin in one block and ends in a consequent block.
+
+**Users of the Standard plugin are advised to upgrade to this version as soon as possible.**
+
+Other Changes and Enhancements
+
+* The Omicron Turbo provides a new conversion - Twokilobyte Blocks. This conversion is suitable for binary load files that consist of many small segments
+* BlockLoading conversion is the default one for Turbo 2000 and Super Turbo
+* All national flags are slightly smaller
+
+
+Changes from version 8.6.6 to 8.6.7
+===================================
+
+This version brings cassette authoring enhancements
+
+* Improved status bar that displays total duration of the generated signal or total number of bytes written to tape images.
+* Signal or tape image generators can be executed in a preview mode. In the preview mode, no output is generated, but all checks take place and total duration of the generated signal or total number of bytes written to tape images are determined and displayed in the status bar. This will help you to determine if the signal will fit in a tape side.
+* Error messages displayed by the signal or tape image generators are aggregated and displayed in a single window. The error messages also include input file name, so it is easier to identify offending playlist items.
+* Batch processing now supports also tape images on input. Use the new TAPE-IMAGE-CONVERTOR keyword.
+* Duration of the protective silence generated at the end of all WAVE files can be adjusted.
+* Errors are detected earlier. First all playlist items are converted to generator instructions. If there are errors, the processing is terminated. If there are no errors, the electric signal or tape images are generated. 
+
+Turbo 2000 Blockloading and ChainLoading
+
+* The file format and loaders have been modified to use different identification bytes at the beginnings of blocks. This prevents normal Turbo 2000 or Universal Turbo loaders from confusing these blocks with normal Turbo 2000/Super Turbo files.
+
+
+
+Changes from version 8.6.5 to 8.6.6
+===================================
+
+This new version enhances user experience (UX)
+
+The Tools menu
+
+* Items in the Tools menu have been repositioned and regrouped. The most important functions are closer to the top of the menu.
+
+Program Configuration Facility  
+
+User interface provided by the Program Configuration Facility has been streamlined.
+  
+* The number of menu items has been reduced from 3 to 1.
+* Buttons displayed by the "Preferences" dialog now have clear meanings - "OK", "Cancel", and "Defaults".
+* You can click the new "Defaults" button to set default values for configuration entries of the currently selected section.
+* Configuration is saved automatically after clicking the "OK" button.
+
+Window Management
+
+* Hierarchy of Windows has been fixed to prevent problems with window management.
+
+Documentation Updates
+
+* Section 1 of the documentation has been restructured. A new subsection describes files processed by Turgen System.
+
+
+Changes from version 8.6.4 to 8.6.5
+===================================
+KSO Turbo 2000 Plugin
+
+* Added ability to convert binary files to the L3 file format
+
+Turbo 2000 and Turbo 2000 - Kilobyte Blocks plugins
+
+* More colorful loading bars for some loaders
+
+Changes from version 8.6.3 to 8.6.4
+===================================
+
+Turbo 6000 Plugin
+
+* Introduced a new file format and binary loader that allows for loading binary files with minimum restrictions. With this enhancement, you can easily load new-era games, such as RGB, Heli In The Caves, Swapz, and many more.
+* Source code of the binary loader has been added to the updated loader package
+
+Cosmetic Changes
+
+* Enlarged national flags that indicate countries of origin for all plugins
+* The Standard plugin now has the US flag assigned
+* Tape Image and Omicron Turbo plugins use a flag with a globe instead of a plain gray rectangle
+
+
+Changes from version 8.6.2 to 8.6.3
+===================================
+
+Improvements of the turbo decoder
+
+* Turbo decoder provides more detailed messages
+* Messaging system of the turbo decoder completely redesigned
+* Copy turbo decoder log to a clipboard with a single button click
+* Verbose messages can be switched on using a single check box and are enabled by default
+
+Turbo 6000 from the German Democratic Republic (GDR)
+
+* Added Turbo 6000 plugin. Tested only using imperfectly hacked atari800-a8cas emulator
+* Description of the file format added to the documentation
+
+Turbo 2000 and Super Turbo
+* Headers saved to external files by the turbo decoder contain hexadecimal dump of the file name, so no information is lost
+
+
+Changes from version 8.6.1 to 8.6.2
+===================================
+
+Added support for the Unerring Master (UM) Atari Turbo System.
+
+* The Atari Super Turbo plugin can convert binary files to the Unerring Master turbo system
+* The Wizard for binary files was enhanced to support the Unerring Master turbo system
+* Description of the UM file format added to the documentation
+
+System Requirements
+
+* Turgen System now requires at least Java SE 6
+
+Other
+
+* Product documentation can be opened from the Help menu
+* Omicron Turbo allows to select more transfer speeds. The only transfer speed recommended for mass distribution of tapes is 2270 bd.
+* Launcher for Windows updated to the newest version of launch4j
+
+Changes from version 8.6.0 to 8.6.1
+===================================
+
+Major update of the Omicron Turbo plugin and its loaders.
+
+* Added support for the KSO Turbo 2000 upgrade (and compatibles) that reads signal from the joystick port
+* Omicron Turbo loaders heavily refactored
+* Cartridge and File version of the Omicron Turbo Stage 0 loader are available in the loader package
+* Loader package updated to version 1.17 with new Omicron Turbo loaders
+* More configuration options for Omicron Turbo
+
+Documentation Updates
+
+* Omicron Turbo Plugin
+* Waveforms
+
+Changes from version 8.5.6 to 8.6.0
+===================================
+
+Updates
+
+* New Omicron Turbo plugin that provides an unifying file format and loaders for all PWM-like modulation based turbo upgrades that switch to turbo mode with COMMAND or DATA OUT signals and read signal from the DATA IN pin of the SIO connector.
+* Consolidated names and spelling of some plugins and binary convertors
+* Silence lists allow to specify tenths of seconds
+* Some plugins allow not to cumulate silence generated after blocks that hold multiple init vectors
+* Automatic waveform selection based on width of pulses
+* Batch processing allows to generate silence lists
+* Batch processing allows to select binary converter by number of pilot tones
+* Batch processing allows to replace current playlist
+* The Standard plugin automatically generates silence after blocks that hold init vectors even without a silence list
+
+Incompatibilities
+* Consolidated names and spelling of some plugins and binary convertors can invalidate existing batch files
+ 
+
+
+Changes from version 8.5.5 to 8.5.6
+===================================
+Minor bugfixes
+
+* Turbo decoder better recalculates pulse widths for sample rates other than 44100 Hz
+* Fixed automatic creation of file names without extensions
+* Removed printouts left by accident
+
+Enhancements
+
+* Turbo Blizzard decoder now tolerates synchronization block terminated with only one narrow pulse
+* Turbo Blizzard decoder reports synchronization blocks decoded
+
+
+
+Changes from version 8.5.4 to 8.5.5
+===================================
+
+Multi-tasking fixes
+
+* Some UI-related code was executed outside of the AWT event thread.
+
+Bacth processing improvements
+
+* The SORT keyword accepts new LISTING value. This enables precise control of the order of the files
+* Output wave files that do not fit in specified tape side length are prefixed with special prefixed
+* Length of unused portions of tape sides is now specified in seconds instead of minutes
+
+
+
+Changes from version 8.5.3 to 8.5.4
+===================================
+
+This version is a quick update that improves batch processing
+
+* Improved user interface for batch processing
+* Improved documentation of batch processing
+* Prefixing output wave file names with tape side numbers allows production of multiple tapes
+* Configurable length of tape sides and length of unused portions of tape sides
+* All plugins support automatic file name creation
+
+Turbo Decoding
+
+* New section named "Preparing WAVE files" was added to the product documentation
+
+
+Changes from version 8.5.2 to 8.5.3
+===================================
+
+Rambit Turbo Tape
+
+* Fixed original loader for segmented binary files. The standard part caused BOOT ERROR
+
+Turbo 2000, Super Turbo, Turbo 2000 - kilobyte blocks, and B-TAPE
+
+* New, configurable automatic file name generation
+* All binary loaders have been polished and indicate I/O error by displaying a purple screen
+* MiniTBL has been enhanced to display file name
+
+Turbo Decoder
+
+* Fixed behavior of the "Always save as binary file" function
+
+Wave Output
+
+* Maximum number of parallel tasks is now configurable and limited to 1-8. Automatic setting is available too.
+
+Batch Processing
+
+* New special function allows to create playlist from a directory of binary files
+* New special function allows to copy the playlist to clipboard as CSV
+
+Changes from version 8.5.1 to 8.5.2
+===================================
+Rambit
+
+* New set of loaders (Modern 2) with another look and feel
+
+UI
+
+* Improved UI for choosing colors (Standard and Rambit Plugins)
+
+Generator
+
+* New waveform "Low quality tape"
+
+Documentation
+
+* Updated screenshots
+
+
+Changes from version 8.5.0 to 8.5.1
+===================================
+Bug Fixes
+
+* Fixed Lower Silesia Turbo 2000 plugin panel. Controls for the binary file were disabled by mistake.
+* Fixed Standard plugin panel. Wrong tooltip text for "Long IRGs" corrected.
+
+New Waveforms
+Now you can choose from 4 types of waveforms
+1. Square (ideal rectangular pulses)
+2. Normal tape (pulses optimized for normal tapes, 5th harmonic). This is the default.
+3. Quality tape (pulses optimized for quality tapes, 7th harmonic)
+4. Pure sine wave 
+
