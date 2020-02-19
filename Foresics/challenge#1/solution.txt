@@ -1,0 +1,5 @@
+To solve the puzzle you must understand the XOR cipher https://es.wikipedia.org/wiki/Cifrado_XOR
+
+you can flip the bytes to create a new file that makes sense, you XOR it with "ff" as hex or "11111111" as binary and it gives you a pk (zip file), then you zip it and its done the pk is on a text file
+
+https://gchq.github.io/CyberChef/

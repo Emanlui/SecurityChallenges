@@ -1,0 +1,48 @@
+To add all the gif frames into one image:
+
+	convert [gif_name].gif %02d.png
+	ls *.png | while read filename; do convert $filename -transparent white $filename; done
+	ls *.png | while read filename; do convert $filename 00.png -gravity center -composite 00.png; done
+
+
+
+bruteforce zip
+	fcrackzip 
+
+view hex values and change it
+	
+	hexedit
+
+binwalk -e
+foremost
+tcpflow -r [file].pcap
+
+
+volatility to do ram analysis
+
+
+Shows the image name
+	volatility -f 'flounder-pc-memdump.elf' imageinfo
+
+Shows the process, you can do a tree with it
+	volatility -f 'flounder-pc-memdump.elf' --profile=Win7SP1x64  psscan --output=dot --output-file=memdump.dot
+
+Show a specific file on the system 
+	volatility -f 'flounder-pc-memdump.elf' --profile=Win7SP1x64  filescan | grep 
+
+Scapy is a tool for python to manipulate pcap files
+
+
+Regular expresions
+
+Find    (.*) 			00
+Replace 0x$1 :			00x0 :
+
+Find 	:(.*)			:a
+Replace :"$1"			:"a"
+
+# Always check the file header
+
+
+
+
