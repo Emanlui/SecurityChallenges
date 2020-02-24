@@ -1,0 +1,2 @@
+cypher that reorders the letters
+http://rumkin.com/tools/cipher/coltrans-double.php

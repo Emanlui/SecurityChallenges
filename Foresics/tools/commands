@@ -43,6 +43,9 @@ Replace :"$1"			:"a"
 
 # Always check the file header
 
+how to use john
+john [file] --wordlist=rockyou.txt
+
 
 
 
